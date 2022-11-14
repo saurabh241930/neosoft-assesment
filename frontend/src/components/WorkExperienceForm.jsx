@@ -84,6 +84,7 @@ const WorkExperienceForm = ({ handleChange, experiences }) => {
             multiline
             rows="10"
             disableUnderline
+            name="description"
             type="text"
             placeholder="Description...."
             sx={{ width: "80%", border: "solid 1px black" }}

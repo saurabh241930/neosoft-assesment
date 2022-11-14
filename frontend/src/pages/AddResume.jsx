@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Typography, Grid, TextField, Box, Button } from "@mui/material";
 import BasicDetailForm from "../components/BasicDetailForm";
 import WorkExperienceForm from "../components/WorkExperienceForm";
-import OtherDetailsForm from "../components/OtherDetailsForm";
+import FormReview from "../components/FormReview";
 import { useEffect } from "react";
 
 
@@ -15,7 +15,6 @@ const AddResume = (props) => {
   const [designation, setDesignation] = React.useState("");
   const [company, setCompany] = React.useState("");
   const [social, setSocial] = React.useState("");
-  const [profile, setProfile] = React.useState("");
   const [gender, setGender] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [location, setLocation] = React.useState("");
@@ -23,6 +22,7 @@ const AddResume = (props) => {
   const [yourself, setYourself] = React.useState("");
   const [experience,setExperience] = React.useState("")
   const [profile_img,setProfileImage] = React.useState("")
+  const [description,setDescription] = React.useState("")
 
   const name_mapping = {
     email: setEmail,
@@ -30,19 +30,19 @@ const AddResume = (props) => {
     designation: setDesignation,
     company: setCompany,
     social: setSocial,
-    profile: setProfile,
     gender: setGender,
     phone: setPhone,
     location: setLocation,
     dob: setDob,
     yourself: setYourself,
     experience: setExperience,
-    profile_img:setProfileImage
+    profile_img:setProfileImage,
+    description:setDescription
   };
 
   const pagewise_value = {
     "1": [name, email, gender, phone, location, dob, yourself],
-    "2":[company,designation,experience,profile_img]
+    "2":[company,designation,experience,profile_img,description]
   };
 
   function bindInput(e) {
@@ -78,7 +78,7 @@ const AddResume = (props) => {
                 <WorkExperienceForm handleChange={bindInput}/>
               )}
               {curr_stage === 3 && (
-                <OtherDetailsForm handleChange={bindInput} />
+                <FormReview  filledValues={pagewise_value} />
               )}
 
               {curr_stage === stages.length ? (
