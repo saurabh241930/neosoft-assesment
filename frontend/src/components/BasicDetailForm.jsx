@@ -1,16 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
 import {
-  Typography,
-  Grid,
-  TextField,
-  Box,
-  Button,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Select,
-  Input,
+  FormControl, Grid, Input, InputLabel, MenuItem, Select, TextField
 } from "@mui/material";
 
 const BasicDetailForm = ({ handleChange }) => {

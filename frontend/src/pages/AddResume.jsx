@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 
 const AddResume = (props) => {
-  const stages = ["basic details", "work experience", "other details"];
+  const stages = ["basic details", "work experience", "Review form"];
   const [curr_stage, setCurrStage] = React.useState(1);
   const [email, setEmail] = React.useState("");
   const [name, setName] = React.useState("");
@@ -41,8 +41,8 @@ const AddResume = (props) => {
   };
 
   const pagewise_value = {
-    "1": [name, email, gender, phone, location, dob, yourself],
-    "2":[company,designation,experience,profile_img,description]
+    "1": {name, email, gender, phone, location, dob, yourself},
+    "2":{company,designation,experience,profile_img,description}
   };
 
   function bindInput(e) {
@@ -58,9 +58,18 @@ const AddResume = (props) => {
   function handleStage(e){
     e.preventDefault()
     setCurrStage((prev) => prev + 1)
-
-
   }
+
+  function submitForm(){
+    const formPayload = {}
+    Object.keys(name_mapping).map(e => {
+      formPayload[e] = eval(e)
+    })
+
+    console.log(formPayload);
+  }
+
+  
 
   return (
     <>
@@ -78,7 +87,7 @@ const AddResume = (props) => {
                 <WorkExperienceForm handleChange={bindInput}/>
               )}
               {curr_stage === 3 && (
-                <FormReview  filledValues={pagewise_value} />
+                <FormReview  handleSubmit={submitForm} />
               )}
 
               {curr_stage === stages.length ? (
